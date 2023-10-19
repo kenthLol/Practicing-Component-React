@@ -14,18 +14,26 @@ function Book(props) {
   return (
     <div className="card" style={cardStyle}>
       <img
-        src={props.image}
+        src={props.value.image}
         className="card-img-top"
         alt="..."
         style={imageStyle}
       />
       <div className="card-body">
-        <h5 className="card-title">{props.title}</h5>
-        <p className="card-text">{props.author}</p>
-        <p className="card-text">{props.year}</p>
-        <a href="#" className="btn btn-primary">
-          Ver
-        </a>
+        <h5 className="card-title">{props.value.title}</h5>
+        <p className="card-text">{props.value.author}</p>
+        <p className="card-text">{props.value.year}</p>
+        <div>
+          <button className="btn btn-primary" style={{ marginRight: "10px" }}>
+            Ver
+          </button>
+          <button
+            onClick={() => props.fnAddFavorites(props.value)}
+            className="btn btn-warning"
+          >
+            Favorito
+          </button>
+        </div>
       </div>
     </div>
   );

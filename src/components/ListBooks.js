@@ -1,21 +1,18 @@
-import dataBook from "../data/books";
 import Book from "./Book";
 import "../Book.css";
 
-function BookList() {
-  let lstBooks = dataBook.map((element) => {
+function BookList(props) {
+  let lstBooksRendered = props.elements.map((element) => {
     return (
       <Book
-        title={element.title}
-        author={element.author}
-        genre={element.genre}
-        year={element.year}
-        image={element.image}
+        key={element.id}
+        value={element}
+        fnAddFavorites={props.fnAddFavorites}
       />
     );
   });
 
-  return <div className="card-grid-container">{lstBooks}</div>;
+  return <div className="card-grid-container">{lstBooksRendered}</div>;
 }
 
 export default BookList;
