@@ -2,7 +2,13 @@ import Favorite from "./Favorite";
 
 function ListFavorites(props) {
   let listFavoritesRendered = props.elements.map((element) => {
-    return <Favorite value={element} />;
+    return (
+      <Favorite
+        key={element.id}
+        value={element}
+        fnRemoveBookFromFavorites={props.fnRemoveBookFromFavorites}
+      />
+    );
   });
 
   return (
