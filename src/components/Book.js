@@ -4,11 +4,12 @@ import "../Book.css"; // Importa estilos adicionales si es necesario
 function Book(props) {
   const cardStyle = {
     width: "18rem",
+    margin: "auto",
   };
 
   const imageStyle = {
     width: "100%", // Ajusta el ancho de la imagen al 100% de la tarjeta
-    height: "400px", // Fija la altura de la imagen
+    height: "360px", // Fija la altura de la imagen
   };
 
   return (

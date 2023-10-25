@@ -5,6 +5,7 @@ import dataBook from "./data/books";
 import "./App.css";
 
 import { useState } from "react";
+import CreateBook from "./components/CreateBook";
 
 function App() {
   const [bookList, setBookList] = useState(dataBook);
@@ -15,7 +16,7 @@ function App() {
     // Verificar si el elemento ya está en la lista de favoritos
     if (ListFavoriteBooks.find((book) => book.id === element.id)) {
       console.log("El libro ya está en favoritos.");
-      setNotification("El libro ya está en favoritos.");
+      setNotification(`El libro ${element.title}, ya está en favoritos.`);
       return;
     }
 
@@ -23,7 +24,7 @@ function App() {
     let tempBookList = [...ListFavoriteBooks];
     tempBookList.push(element);
     setListFavoriteBooks(tempBookList);
-    setNotification("Libro agregado a favoritos.");
+    setNotification(`Libro ${element.title} agregado a favoritos.`);
   }
 
   function removeBookFromFavorites(element) {
@@ -31,6 +32,10 @@ function App() {
       (book) => book.id !== element.id
     );
     setListFavoriteBooks(updatedFavorites);
+  }
+
+  function NewBook(element) {
+    setBookList([...bookList, element]);
   }
 
   return (
@@ -49,14 +54,15 @@ function App() {
       )}
       <div className="container">
         <div className="row">
-          <div className="col-md-9">
-            <BookList elements={bookList} fnAddFavorites={addBookToFavorite} />
-          </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
+            <CreateBook fnNewBook={NewBook} />
             <ListFavorites
               elements={ListFavoriteBooks}
               fnRemoveBookFromFavorites={removeBookFromFavorites}
             />
+          </div>
+          <div className="col-md-8">
+            <BookList elements={bookList} fnAddFavorites={addBookToFavorite} />
           </div>
         </div>
       </div>

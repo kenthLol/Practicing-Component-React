@@ -12,8 +12,12 @@ function ListFavorites(props) {
   });
 
   return (
-    <div>
-      <h4>Lista Favoritos</h4>
+    <div
+      style={{
+        borderTop: "1px solid rgb(210, 210, 210)",
+      }}
+    >
+      <h4 style={{ margin: "20px 0 20px 0" }}>Lista Favoritos</h4>
       {listFavoritesRendered}
     </div>
   );
